@@ -103,7 +103,7 @@ function MainProg()
 	}
 
 var chatis="";
-
+var myid=0;
 function update_data()
 	{		
 	if(gamehttp.readyState == 4)
@@ -112,7 +112,18 @@ function update_data()
 		if (mr!="")
 			{
 			console.log("data received from server: "+mr);
-		
+			if (mr=="notlogin")
+				{
+				alert("მომხმარებელი ან პაროლი არასწორია!");
+				show_settings();
+				}
+			else if (mr.substring(0, 5)=="login")
+				{
+				var a=new Array();
+				a=mr.split("|");
+				myid=a[1];
+				show_home();
+				}
 				
 			}
 		}
@@ -200,7 +211,7 @@ function onResume()
 
 	<div id='login_window' style='visibility:hidden; position:fixed; left:0px; top:0px; width:350px; height:600px;'>
 		<a style='float:left; margin-top:7px; margin-left: 7px;'  href='Javascript: show_settings();'><img src='settings.png'></a>
-		<Br><br><br>
+		<Br><br><br>		<Br><br><br><br>
 		<center>
 		<img src='logo.png' width=70px height=70px></center>
 		<br><br><br><center>მიმდინარეობს სისტემასთან დაკავშირება</center>
