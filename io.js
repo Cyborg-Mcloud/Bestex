@@ -55,6 +55,8 @@ function readAsText(file)
 		a=myData.split(";");
 		MyUser=a[0];
 		MyPass=a[1];
+		if (MyUser=="")
+			{MyUser="nouser";MyPass='nopass";}
 		if (MyUser!="nouser")
 			{
 			document.getElementById("myname").value=MyUser;

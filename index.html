@@ -137,6 +137,7 @@ function UpData()
 
 function login()
 	{
+	show_logging_in();
 	url="http://bestex.ge/app/login.php?uname="+MyUser+"&upass="+MyPass;
 	console.log("logging in: "+url);
 	gamehttp.open('GET',url,true);
@@ -149,6 +150,8 @@ function Start()
 	if (started==0)
 		{
 		
+
+		login();
 		
 		}  
 	else
@@ -265,9 +268,12 @@ function saveuser()
 
 	MyUser=document.getElementById("myname").value;
 	MyPass=document.getElementById("mypass").value;
-
+if (MyUser=="")
+	{
+		MyUser="nouser";MyPass="nopass";
+	}
 	WriteData(); 
-	alert("user saved: "+MyUser);
+	//alert("user saved: "+MyUser);
 	if(started==0)
 		{
 		Start();
