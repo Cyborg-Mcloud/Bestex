@@ -60,6 +60,10 @@ function readAsText(file)
 			document.getElementById("myname").value=MyUser;
 			document.getElementById("mypass").value=MyPass;
 			}
+		else
+			{
+			show_settings();
+			}
 		};
 	reader.readAsText(file);
 

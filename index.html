@@ -135,11 +135,22 @@ function UpData()
 	gamehttp.send(null);
 	}
 
+function login()
+	{
+	url="http://bestex.ge/app/login.php?uname="+MyUser+"&upass="+MyPass;
+	console.log("logging in: "+url);
+	gamehttp.open('GET',url,true);
+	gamehttp.send(null);
+	}
+//started=1;  MainProg();
 function Start()
 	{
 	console.log("Start / END");
 	if (started==0)
-		{started=1;  MainProg();}  
+		{
+		
+		
+		}  
 	else
 		{//started=0;
 		} 
@@ -178,18 +189,25 @@ function onResume()
   </style>
   <body bgcolor=white>
   			
-	<div id='fanjara' style='position:relative; overflow:hidden; width:355px; height:600px;'>
+	<div id='fanjara' style='position:relative; overflow:hidden; width:350px; height:600px;'>
 		<a style='float:left; margin-top:7px; margin-left: 7px;'  href='Javascript: show_settings();'><img src='settings.png'></a>
 
 	</div>
 
+	<div id='login_window' style='position:relative; overflow:hidden; width:350px; height:600px;'>
+		<a style='float:left; margin-top:7px; margin-left: 7px;'  href='Javascript: show_settings();'><img src='settings.png'></a>
+		<Br><br><br>
+		<center>
+		<img src='logo.png' width=70px height=70px></center>
+		<br><br><br><center>მიმდინარეობს სისტემასთან დაკავსირება</center>
+	</div>
 	   	
 
-	<div id='settings_sheet' style='visibility:hidden; position:fixed; left:0px; top:0px; padding:10px;   width:355px; height:600px; background-color:#f2f3f5;'>
-	<Br><br>
+	<div id='settings_sheet' style='visibility:hidden; position:fixed; left:0px; top:0px; padding:10px;   width:350px; height:600px; background-color:#f2f3f5;'>
+	<Br><br><br><br>
 	<center>
 	<img src='logo.png' width=70px height=70px></center>
-		<br><br><br><br><br><center>
+		<br><br><br><center>
 		<b>თქვენი მონაცემები</b>
 		<table>
 			<tr><td>მომხმ.:</td><td> <input type='text' id='myname' name='myname' value='' placeholder='სახელი ან ელ.ფოსტა' size=20></td></tr>
@@ -212,6 +230,7 @@ function show_settings()
 	curwindow=1;
 	document.getElementById("fanjara").style.visibility="hidden";
 	document.getElementById("settings_sheet").style.visibility="visible";
+		document.getElementById("login_window").style.visibility="hidden";
 	}
 
 
@@ -220,8 +239,18 @@ function show_home()
 	curwindow=0;
 	document.getElementById("fanjara").style.visibility="visible";
 	document.getElementById("settings_sheet").style.visibility="hidden";
+	document.getElementById("login_window").style.visibility="hidden";
 	}
 
+
+
+function show_logging_in()
+	{
+	curwindow=2;
+	document.getElementById("fanjara").style.visibility="hidden";
+	document.getElementById("settings_sheet").style.visibility="hidden";
+		document.getElementById("login_window").style.visibility="visible";
+	}
 
 function stopScrolling( touchEvent )
 	{ touchEvent.preventDefault(); }
