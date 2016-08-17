@@ -26,11 +26,11 @@
 	<preference name="target-device" value="handset" /> 
 	<preference name="phonegap-version" value="cli-6.3.0" /> 
 	<preference name="orientation" value="portrait" />
-	<preference name="webviewbounce" value="false" />  
-	<preference name="DisallowOverscroll" value="true" />
+	<preference name="webviewbounce" value="true" />  
+	<preference name="DisallowOverscroll" value="false" />
 	<preference name="fullscreen" value="true" />
-	<preference name="keepRunning" value="false" />
-	<preference name="exit-on-suspend" value="true" />
+	<preference name="keepRunning" value="true" />
+	<preference name="exit-on-suspend" value="false" />
     <description>
      Bestex
     </description>
