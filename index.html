@@ -137,11 +137,12 @@ function UpData()
 
 function login()
 	{
-	show_logging_in();
+
 	url="http://bestex.ge/app/login.php?uname="+MyUser+"&upass="+MyPass;
 	console.log("logging in: "+url);
 	gamehttp.open('GET',url,true);
 	gamehttp.send(null);
+	show_logging_in();
 	}
 //started=1;  MainProg();
 function Start()
@@ -197,12 +198,12 @@ function onResume()
 
 	</div>
 
-	<div id='login_window' style='position:relative; overflow:hidden; width:350px; height:600px;'>
+	<div id='login_window' style='visibility:hidden; position:fixed; left:0px; top:0px; width:350px; height:600px;'>
 		<a style='float:left; margin-top:7px; margin-left: 7px;'  href='Javascript: show_settings();'><img src='settings.png'></a>
 		<Br><br><br>
 		<center>
 		<img src='logo.png' width=70px height=70px></center>
-		<br><br><br><center>მიმდინარეობს სისტემასთან დაკავსირება</center>
+		<br><br><br><center>მიმდინარეობს სისტემასთან დაკავშირება</center>
 	</div>
 	   	
 
