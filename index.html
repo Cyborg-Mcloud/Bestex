@@ -185,13 +185,13 @@ function onResume()
 
 	   	
 
-	<div id='settings_sheet' style='visibility:hidden; position:absolute; left:0px; top:0px; padding:10px;'>
-		<center>
+	<div id='settings_sheet' style='visibility:hidden; position:absolute; left:0px; top:0px; padding:10px; background-color:#f2f3f5;'>
+		<br><br><br><br><br><center>
 		<b>თქვენი მონაცემები</b>
 		<table>
-			<tr><td>მომხმ.:</td><td> <input type='text' id='myname' name='myname' value='youuser' size=20></td></tr>
-			<tr><td>პაროლი:</td><td> <input type='password' id='mypass' name='mypass' value='yourpass' size=20></td>
-			<td rowspan=2><a style='' href='Javascript: saveuser();'><img src='save.png'></a></td></tr>
+			<tr><td>მომხმ.:</td><td> <input type='text' id='myname' name='myname' value='' placeholder='სახელი ან ელ.ფოსტა' size=20></td></tr>
+			<tr><td>პაროლი:</td><td> <input type='password' id='mypass' name='mypass' value='' placeholder='პაროლი' size=20></td></tr>
+			<tr><td colspan=2 align=right><a style='' href='Javascript: saveuser();'><img src='login.png'></a></td></tr>
 		</table><Br><br>
 		სისტემაში რეგისტრაციისთვის ისარგებლეთ ბროუზერით<br><br>
 		<a href='Javascript: show_home();'>Back</a><Br><Br>
