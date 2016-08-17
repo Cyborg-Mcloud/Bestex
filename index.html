@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<meta http-equiv="Content-Security-Policy" content="img-src * 'self' data:; default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+  <head>
+
+  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Bestex</title>
+
+	<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+
+	<script type="text/javascript" charset="utf-8" src="io.js"></script>
+	<script type="text/javascript" charset="utf-8" src="func.js"></script>
+	
+
+<script type="text/javascript" charset="utf-8">
+
+var mystatus=0;
+
+document.addEventListener("deviceready", onDeviceReady, false);
+var MyUser="nouser";
+var MyPass="nopass";
+started=0;
+
+function onBackKeyDown() 
+	{
+
+	}
+
+function onMenuDown() 
+	{
+	
+	}
+
+
+function onSearchDown() 
+	{
+	
+	}
+
+function onVolumeDown()
+	{
+
+	}
+
+function onVolumeUp()
+	{
+
+	}
+
+var dataex=0;
+
+
+sx=getscreenw();
+sy=getscreenh();
+
+
+
+var gamehttp;
+if (window.XMLHttpRequest) {gamehttp=new XMLHttpRequest();}
+else if (window.ActiveXObject) {gamehttp=new ActiveXObject('Microsoft.XMLHTTP');}
+else {alert('Your browser does not support XMLHTTP!');}
+gamehttp.onreadystatechange=update_data;
+
+// ------------------------------
+function onDeviceReady() 
+	{
+
+	console.log("device ready, checking connection");
+	checkConnection();
+
+	document.addEventListener("pause", onPause, false);
+	//document.addEventListener("backbutton", onBackKeyDown, false);
+	//document.addEventListener("menubutton", onMenuDown, false);
+	//document.addEventListener("searchbutton", onSearchDown, false);
+	document.addEventListener("volumedownbutton", onVolumeDown, false);
+	document.addEventListener("volumeupbutton", onVolumeUp, false);
+
+	document.addEventListener("resume", onResume, false);
+	
+	console.log("device ready, dealing with record file");
+	
+	kc=checkIfFileExists("bestdata.txt");
+
+	if (started==0)	
+		{
+		Start();
+		}
+
+	}
+// ------------------------
+
+var updatacounter=0;
+var uplimit=5;
+function MainProg()
+	{
+
+	if (started==1)
+		{	
+		console.log("I am running");
+	
+		}
+		setTimeout("MainProg();",1000);
+	}
+
+var chatis="";
+
+function update_data()
+	{		
+	if(gamehttp.readyState == 4)
+		{
+		mr=gamehttp.responseText;
+		if (mr!="")
+			{
+			console.log("data received from server: "+mr);
+		
+				
+			}
+		}
+	}
+
+function UpData()
+	{
+	
+
+	if (MyUser!="nouser")
+		{    
+		url="http://design.ge/geotaxi/upload.php?uname="+MyUser+"&pass="+MyPass+"&lat="+MyLat+"&long="+MyLong+"&alt="+MyAlt+"&head="+MyHead+"&speed="+MySpeed+"&passive="+inpause+"&myid="+myid;		
+		}
+	else
+		{
+		url="http://design.ge/geotaxi/upload.php?passive="+inpause+"&myid="+myid+"&lat="+MyLat+"&long="+MyLong+"&alt="+MyAlt+"&head="+MyHead+"&speed="+MySpeed;
+		}
+	console.log("just upload: "+url);
+	gamehttp.open('GET',url,true);
+	gamehttp.send(null);
+	}
+
+function Start()
+	{
+	console.log("Start / END");
+	if (started==0)
+		{started=1;  MainProg();}  
+	else
+		{//started=0;
+		} 
+
+	}
+
+function onPause()
+	{
+	console.log("on pause");
+	started=0;
+	WriteData();
+	inpause=1;
+	}
+
+function onResume() 
+	{
+	console.log("on resume");
+	if (inpause==1)
+		{
+		inpause=0;
+		}
+
+	if (started==0)
+		{
+		checkConnection();
+		Start();
+		}
+
+	}
+
+    </script>
+  </head>
+  <style>
+	body {color:black; margin:0px; padding:0px;}
+	a {text-decoration:none; color:blue;}
+  </style>
+  <body bgcolor=white>
+  			
+	<div id='fanjara' style='position:relative; overflow:hidden; width:400px; height:600px;'>
+		<a style='float:left; margin-top:7px; margin-left: 7px;'  href='Javascript: show_settings();'><img src='but_info.png'></a>
+
+	</div>
+
+	   	
+
+	<div id='settings_sheet' style='visibility:hidden; position:absolute; left:0px; top:0px; padding:10px;'>
+		<center>
+		<b>თქვენი მონაცემები</b>
+		<table>
+			<tr><td>მომხმ.:</td><td> <input type='text' id='myname' name='myname' value='youuser' size=20></td></tr>
+			<tr><td>პაროლი:</td><td> <input type='password' id='mypass' name='mypass' value='yourpass' size=20></td>
+			<td rowspan=2><a style='' href='Javascript: saveuser();'><img src='save.png'></a></td></tr>
+		</table><Br><br>
+		სისტემაში რეგისტრაციისთვის ისარგებლეთ ბროუზერით<br><br>
+		<a href='Javascript: show_home();'>Back</a>
+	</div>
+
+
+<script>
+
+var curwindow=0;
+
+function show_settings()
+	{
+	checkConnection();
+	curwindow=1;
+	document.getElementById("fanjara").style.visibility="hidden";
+	document.getElementById("settings_sheet").style.visibility="visible";
+	}
+
+
+function show_home()
+	{
+	curwindow=0;
+	document.getElementById("fanjara").style.visibility="visible";
+	document.getElementById("settings_sheet").style.visibility="hidden";
+	}
+
+
+function stopScrolling( touchEvent )
+	{ touchEvent.preventDefault(); }
+
+
+document.body.addEventListener( 'touchmove' , stopScrolling , false );
+
+
+
+function saveuser()
+	{
+
+	MyUser=document.getElementById("myname").value;
+	MyPass=document.getElementById("mypass").value;
+
+	WriteData(); 
+	alert("user saved: "+MyUser);
+	if(started==0)
+		{
+		Start();
+		}
+	}
+
+
+ function fail(error) 
+	{
+    console.log(error.code);
+    }
+</script></body>
+</html>
