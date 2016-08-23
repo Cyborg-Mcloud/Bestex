@@ -218,7 +218,7 @@ function onResume()
 		<div id='info_window' style='position:absolute; right:7px; top:7px; font-size:11px; text-align:right;'>
 
 		</div>
-		<div id='main_window' style='font-size:11px; border:1px solid red; display:block; position:absolute; top:55px; left:0px; width:300px; height:400px; overflow-y:auto; overflow-x:hidden;'>
+		<div id='main_window' style='font-size:11px; border:1px solid red; width:300px; height:400px; overflow:auto;'>
 
 		</div>
 	</div>
@@ -282,11 +282,10 @@ function show_logging_in()
 	document.getElementById("login_window").style.visibility="visible";
 	}
 
-function stopScrolling( touchEvent )
-	{ touchEvent.preventDefault(); }
+//function stopScrolling( touchEvent )	{ touchEvent.preventDefault(); }
 
 
-document.body.addEventListener( 'touchmove' , stopScrolling , false );
+//document.body.addEventListener( 'touchmove' , stopScrolling , false );
 
 
 
